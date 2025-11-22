@@ -2,7 +2,10 @@ import { FC, useMemo } from "react";
 import { ChevronLeft, Calendar } from "lucide-react";
 import { Cart } from "../../data/mockData";
 import { colors } from "../common/constants";
-import { calculateInstallmentSchedule, NUM_INSTALLMENTS } from "../../utils/scheduleUtils";
+import {
+  calculateInstallmentSchedule,
+  NUM_INSTALLMENTS,
+} from "../../utils/scheduleUtils";
 
 interface PlanDetailsScreenProps {
   cart: Cart;
