@@ -2,6 +2,7 @@ import { FC, useMemo } from "react";
 import { ChevronLeft, Calendar } from "lucide-react";
 import { Cart } from "../../data/mockData";
 import { colors } from "../common/constants";
+import { calculateInstallmentSchedule, NUM_INSTALLMENTS } from "../../utils/scheduleUtils";
 
 interface PlanDetailsScreenProps {
   cart: Cart;
@@ -13,28 +14,16 @@ interface PlanDetailsScreenProps {
  * PlanDetailsScreen Component
  * Displays the 3-installment payment schedule breakdown
  * Shows amounts, due dates, and confirmation button
+ * Uses scheduleUtils for installment calculation
  */
 export const PlanDetailsScreen: FC<PlanDetailsScreenProps> = ({
   cart,
   onConfirm,
   onBack,
 }) => {
-  // Calculate installment schedule
+  // Calculate installment schedule using utility function
   const installments = useMemo(() => {
-    const amount = cart.total / 3;
-    return [
-      { due: "Today", amount: amount, date: new Date() },
-      {
-        due: "in 30 days",
-        amount: amount,
-        date: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-      },
-      {
-        due: "in 60 days",
-        amount: amount,
-        date: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000),
-      },
-    ];
+    return calculateInstallmentSchedule(cart.total);
   }, [cart.total]);
 
   return (
@@ -67,7 +56,7 @@ export const PlanDetailsScreen: FC<PlanDetailsScreenProps> = ({
             className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-bold text-white"
             style={{ backgroundColor: colors.primary }}
           >
-            <Calendar size={16} /> Split into 3 equal payments
+            <Calendar size={16} /> Split into {NUM_INSTALLMENTS} equal payments
           </div>
         </div>
 
