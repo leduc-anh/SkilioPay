@@ -8,4 +8,4 @@ export const colors = {
 };
 
 // Screen types
-export type Screen = "checkout" | "plan-details" | "success" | "dashboard";
+export type Screen = "checkout" | "plan-details" | "success" | "dashboard" | "payment-due" | "payment-history";

@@ -17,6 +17,7 @@ interface DashboardScreenProps {
   logs?: Array<{ timestamp: Date; message: string }>;
   onBackToCheckout: () => void;
   onRetry?: (agreementId: string, installmentIndex: number) => void;
+  onViewHistory?: () => void;
 }
 
 /**
@@ -26,6 +27,7 @@ interface DashboardScreenProps {
  */
 export const DashboardScreen: FC<DashboardScreenProps> = ({
   onBackToCheckout,
+  onViewHistory,
 }) => {
   // Mock data for demo - simulating multiple plans
   const mockPlans = [
@@ -237,6 +239,7 @@ export const DashboardScreen: FC<DashboardScreenProps> = ({
 
         {/* View Payment History Button */}
         <button
+          onClick={onViewHistory}
           className="w-full py-4 rounded-2xl text-white font-bold text-base shadow-lg hover:shadow-xl transition-all"
           style={{ backgroundColor: colors.primary }}
         >

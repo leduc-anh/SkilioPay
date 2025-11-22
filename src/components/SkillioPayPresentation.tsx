@@ -11,6 +11,8 @@ import { CheckoutScreen } from "./screens/CheckoutScreen";
 import { PlanDetailsScreen } from "./screens/PlanDetailsScreen";
 import { SuccessScreen } from "./screens/SuccessScreen";
 import { DashboardScreen } from "./screens/DashboardScreen";
+import { PaymentDueScreen } from "./screens/PaymentDueScreen";
+import { PaymentHistoryScreen } from "./screens/PaymentHistoryScreen";
 
 /**
  * SkillioPayPresentation - Main Container Component
@@ -90,6 +92,14 @@ const SkillioPayPresentation = () => {
     setCurrentCart(newCart);
   };
 
+  const handleViewPaymentHistory = () => {
+    setScreen("payment-history");
+  };
+
+  const handleShowPaymentDue = () => {
+    setScreen("payment-due");
+  };
+
   const renderScreen = () => {
     switch (screen) {
       case "checkout":
@@ -125,6 +135,29 @@ const SkillioPayPresentation = () => {
             logs={logs}
             onBackToCheckout={handleBackToCheckout}
             onRetry={handleRetryPayment}
+            onViewHistory={handleViewPaymentHistory}
+          />
+        );
+      case "payment-due":
+        return (
+          <PaymentDueScreen
+            agreement={activeAgreement || agreements[0] || null}
+            onPayNow={() => {
+              alert("Payment processed!");
+              setScreen("dashboard");
+            }}
+            onUpdatePaymentMethod={() => {
+              alert("Update payment method functionality");
+            }}
+            onDismiss={() => setScreen("dashboard")}
+            onBack={() => setScreen("dashboard")}
+          />
+        );
+      case "payment-history":
+        return (
+          <PaymentHistoryScreen
+            agreements={agreements}
+            onBack={() => setScreen("dashboard")}
           />
         );
       default:
@@ -183,6 +216,20 @@ const SkillioPayPresentation = () => {
                 Simulate Payment Failure on Retry
               </span>
             </label>
+          </div>
+          <div className="col-span-2 flex gap-2">
+            <button
+              onClick={handleShowPaymentDue}
+              className="flex-1 px-3 py-2 bg-orange-600 hover:bg-orange-700 rounded font-semibold text-xs transition-colors"
+            >
+              📅 Show Payment Due
+            </button>
+            <button
+              onClick={handleViewPaymentHistory}
+              className="flex-1 px-3 py-2 bg-teal-600 hover:bg-teal-700 rounded font-semibold text-xs transition-colors"
+            >
+              📊 View History
+            </button>
           </div>
         </div>
       </div>
