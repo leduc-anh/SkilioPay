@@ -1,5 +1,11 @@
 import { FC, useState } from "react";
-import { ChevronLeft, CreditCard, Calendar, Lock, Headphones } from "lucide-react";
+import {
+  ChevronLeft,
+  CreditCard,
+  Calendar,
+  Lock,
+  Headphones,
+} from "lucide-react";
 import { Cart } from "../../data/mockData";
 import { colors } from "../common/constants";
 
@@ -22,11 +28,17 @@ export const CheckoutScreen: FC<CheckoutScreenProps> = ({
   eligibility,
   onSelectPayLater,
 }) => {
-  const [selectedOption, setSelectedOption] = useState<PaymentOption>("3months");
+  const [selectedOption, setSelectedOption] =
+    useState<PaymentOption>("3months");
 
   const paymentOptions = [
     { id: "1month" as PaymentOption, label: "Pay in 1 month", months: 1 },
-    { id: "3months" as PaymentOption, label: "Pay in 3 months", months: 3, popular: true },
+    {
+      id: "3months" as PaymentOption,
+      label: "Pay in 3 months",
+      months: 3,
+      popular: true,
+    },
     { id: "6months" as PaymentOption, label: "Pay in 6 months", months: 6 },
     { id: "12months" as PaymentOption, label: "Pay in 12 months", months: 12 },
   ];
@@ -88,7 +100,10 @@ export const CheckoutScreen: FC<CheckoutScreenProps> = ({
 
         {/* Select Payment Method */}
         <div className="pt-2">
-          <div className="flex items-center gap-2 mb-4" style={{ color: colors.dark }}>
+          <div
+            className="flex items-center gap-2 mb-4"
+            style={{ color: colors.dark }}
+          >
             <CreditCard size={20} />
             <span className="font-bold text-base">Select Payment Method</span>
           </div>
@@ -105,7 +120,9 @@ export const CheckoutScreen: FC<CheckoutScreenProps> = ({
             <div className="flex items-center gap-4">
               <div
                 className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                  selectedOption === "full" ? "border-gray-500" : "border-gray-300"
+                  selectedOption === "full"
+                    ? "border-gray-500"
+                    : "border-gray-300"
                 }`}
               >
                 {selectedOption === "full" && (
@@ -113,7 +130,10 @@ export const CheckoutScreen: FC<CheckoutScreenProps> = ({
                 )}
               </div>
               <div className="flex-1 text-left">
-                <div className="font-bold text-base" style={{ color: colors.dark }}>
+                <div
+                  className="font-bold text-base"
+                  style={{ color: colors.dark }}
+                >
                   Pay in Full
                 </div>
                 <div className="text-sm text-gray-600">
@@ -126,7 +146,10 @@ export const CheckoutScreen: FC<CheckoutScreenProps> = ({
 
         {/* PayLater Options */}
         <div>
-          <div className="flex items-center gap-2 mb-4" style={{ color: colors.dark }}>
+          <div
+            className="flex items-center gap-2 mb-4"
+            style={{ color: colors.dark }}
+          >
             <Calendar size={20} />
             <span className="font-bold text-base">PayLater Options</span>
           </div>
@@ -172,12 +195,15 @@ export const CheckoutScreen: FC<CheckoutScreenProps> = ({
                         className={`font-bold text-base ${
                           !eligibility.eligible ? "text-gray-400" : ""
                         }`}
-                        style={eligibility.eligible ? { color: colors.dark } : {}}
+                        style={
+                          eligibility.eligible ? { color: colors.dark } : {}
+                        }
                       >
                         {option.label}
                       </div>
                       <div className="text-sm text-gray-600">
-                        ${(cart.total / option.months).toFixed(2)} / mo • 0% Interest
+                        ${(cart.total / option.months).toFixed(2)} / mo • 0%
+                        Interest
                       </div>
                     </div>
                   </div>

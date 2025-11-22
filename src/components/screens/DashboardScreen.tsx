@@ -1,5 +1,13 @@
 import { FC } from "react";
-import { ChevronLeft, Bell, TrendingUp, CheckCircle, Headphones, Watch, Gamepad2 } from "lucide-react";
+import {
+  ChevronLeft,
+  Bell,
+  TrendingUp,
+  CheckCircle,
+  Headphones,
+  Watch,
+  Gamepad2,
+} from "lucide-react";
 import { User, Agreement } from "../../data/mockData";
 import { colors } from "../common/constants";
 
@@ -65,7 +73,11 @@ export const DashboardScreen: FC<DashboardScreenProps> = ({
       {/* Header */}
       <div className="bg-gradient-to-r from-emerald-500 to-teal-600 p-5 text-white flex-shrink-0">
         <div className="flex items-center justify-between">
-          <button onClick={onBackToCheckout} className="p-1" aria-label="Back to checkout">
+          <button
+            onClick={onBackToCheckout}
+            className="p-1"
+            aria-label="Back to checkout"
+          >
             <ChevronLeft size={24} />
           </button>
           <span className="font-bold text-xl">My PayLater</span>
@@ -88,13 +100,15 @@ export const DashboardScreen: FC<DashboardScreenProps> = ({
               <CheckCircle size={32} className="text-white" />
             </div>
           </div>
-          
+
           <div className="h-px bg-white/30 mb-4" />
-          
+
           <div className="flex justify-between items-end">
             <div>
               <div className="text-xs opacity-80 mb-1">Total Remaining</div>
-              <div className="text-2xl font-bold">${totalRemaining.toFixed(2)}</div>
+              <div className="text-2xl font-bold">
+                ${totalRemaining.toFixed(2)}
+              </div>
             </div>
             <div className="text-right">
               <div className="text-xs opacity-80 mb-1">Next Due</div>
@@ -107,7 +121,10 @@ export const DashboardScreen: FC<DashboardScreenProps> = ({
         <div>
           <div className="flex items-center gap-2 mb-4">
             <TrendingUp size={20} style={{ color: colors.dark }} />
-            <span className="font-bold text-base" style={{ color: colors.dark }}>
+            <span
+              className="font-bold text-base"
+              style={{ color: colors.dark }}
+            >
               Active Payment Plans
             </span>
           </div>
@@ -122,14 +139,19 @@ export const DashboardScreen: FC<DashboardScreenProps> = ({
                 >
                   <div className="flex items-start gap-4 mb-3">
                     {/* Icon */}
-                    <div className={`${plan.color} rounded-xl p-3 flex-shrink-0`}>
+                    <div
+                      className={`${plan.color} rounded-xl p-3 flex-shrink-0`}
+                    >
                       <PlanIcon size={28} className="text-white" />
                     </div>
 
                     {/* Info */}
                     <div className="flex-1">
                       <div className="flex items-start justify-between mb-1">
-                        <div className="font-bold text-base" style={{ color: colors.dark }}>
+                        <div
+                          className="font-bold text-base"
+                          style={{ color: colors.dark }}
+                        >
                           {plan.name}
                         </div>
                         <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-lg">
@@ -162,8 +184,13 @@ export const DashboardScreen: FC<DashboardScreenProps> = ({
 
                   {/* Next Payment Info */}
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-600">Next: ${plan.nextAmount.toFixed(2)}</span>
-                    <span className="font-semibold" style={{ color: colors.dark }}>
+                    <span className="text-gray-600">
+                      Next: ${plan.nextAmount.toFixed(2)}
+                    </span>
+                    <span
+                      className="font-semibold"
+                      style={{ color: colors.dark }}
+                    >
                       {plan.nextDate}
                     </span>
                   </div>
@@ -175,7 +202,10 @@ export const DashboardScreen: FC<DashboardScreenProps> = ({
 
         {/* Completed Plans */}
         <div>
-          <div className="font-bold text-base mb-3" style={{ color: colors.dark }}>
+          <div
+            className="font-bold text-base mb-3"
+            style={{ color: colors.dark }}
+          >
             Completed Plans
           </div>
 
@@ -188,7 +218,10 @@ export const DashboardScreen: FC<DashboardScreenProps> = ({
 
               {/* Info */}
               <div className="flex-1">
-                <div className="font-bold text-base mb-1" style={{ color: colors.dark }}>
+                <div
+                  className="font-bold text-base mb-1"
+                  style={{ color: colors.dark }}
+                >
                   {completedPlan.name}
                 </div>
                 <div className="text-xs text-gray-500">

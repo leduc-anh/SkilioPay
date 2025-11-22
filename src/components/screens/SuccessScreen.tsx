@@ -31,10 +31,9 @@ export const SuccessScreen: FC<SuccessScreenProps> = ({
       })
     : "";
   const reminderDate = nextPayment
-    ? new Date(new Date(nextPayment.dueDate).getTime() - 3 * 24 * 60 * 60 * 1000).toLocaleDateString(
-        "en-US",
-        { month: "short", day: "numeric" }
-      )
+    ? new Date(
+        new Date(nextPayment.dueDate).getTime() - 3 * 24 * 60 * 60 * 1000
+      ).toLocaleDateString("en-US", { month: "short", day: "numeric" })
     : "";
 
   return (
@@ -44,9 +43,17 @@ export const SuccessScreen: FC<SuccessScreenProps> = ({
         <div className="relative z-10">
           {/* Animated Success Icon */}
           <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-2xl animate-bounce">
-            <Check size={48} style={{ color: colors.primary }} strokeWidth={3} />
+            <Check
+              size={48}
+              style={{ color: colors.primary }}
+              strokeWidth={3}
+            />
           </div>
-          <div className="text-2xl font-bold mb-2">Payment<br/>Successful!</div>
+          <div className="text-2xl font-bold mb-2">
+            Payment
+            <br />
+            Successful!
+          </div>
           <div className="text-sm opacity-90">
             Your PayLater plan is now active
           </div>
@@ -70,7 +77,9 @@ export const SuccessScreen: FC<SuccessScreenProps> = ({
 
           {/* First Payment */}
           <div className="flex justify-between items-center mb-3 pb-3 border-b border-gray-200">
-            <span className="text-gray-500 text-sm font-medium">First Payment</span>
+            <span className="text-gray-500 text-sm font-medium">
+              First Payment
+            </span>
             <span className="font-bold text-2xl" style={{ color: colors.dark }}>
               ${paidAmount.toFixed(2)}
             </span>
@@ -96,14 +105,18 @@ export const SuccessScreen: FC<SuccessScreenProps> = ({
               Next Payment Reminder
             </div>
             <div className="text-amber-800 text-xs">
-              We'll notify you on {reminderDate} (3 days before) for your ${nextPayment?.amount.toFixed(2)} payment due {nextPaymentDate}
+              We'll notify you on {reminderDate} (3 days before) for your $
+              {nextPayment?.amount.toFixed(2)} payment due {nextPaymentDate}
             </div>
           </div>
         </div>
 
         {/* Payment Progress */}
         <div>
-          <div className="font-bold text-base mb-2" style={{ color: colors.dark }}>
+          <div
+            className="font-bold text-base mb-2"
+            style={{ color: colors.dark }}
+          >
             Payment Progress
           </div>
           <div className="bg-gray-50 rounded-xl p-4">
@@ -118,7 +131,10 @@ export const SuccessScreen: FC<SuccessScreenProps> = ({
                   }}
                 />
               </div>
-              <span className="font-bold text-sm" style={{ color: colors.dark }}>
+              <span
+                className="font-bold text-sm"
+                style={{ color: colors.dark }}
+              >
                 1/{agreement.schedule.length}
               </span>
             </div>
@@ -132,7 +148,10 @@ export const SuccessScreen: FC<SuccessScreenProps> = ({
 
         {/* What's Next */}
         <div className="bg-white rounded-2xl p-5 border border-gray-200">
-          <div className="font-bold text-base mb-3" style={{ color: colors.dark }}>
+          <div
+            className="font-bold text-base mb-3"
+            style={{ color: colors.dark }}
+          >
             What's Next?
           </div>
           <div className="space-y-2">
@@ -142,7 +161,10 @@ export const SuccessScreen: FC<SuccessScreenProps> = ({
               "Earn rewards for on-time payments",
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-2">
-                <CheckCircle size={16} className="text-emerald-500 flex-shrink-0 mt-0.5" />
+                <CheckCircle
+                  size={16}
+                  className="text-emerald-500 flex-shrink-0 mt-0.5"
+                />
                 <span className="text-sm text-gray-700">{item}</span>
               </div>
             ))}

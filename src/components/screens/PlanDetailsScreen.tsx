@@ -67,7 +67,10 @@ export const PlanDetailsScreen: FC<PlanDetailsScreenProps> = ({
         <div>
           <div className="flex items-center gap-2 mb-4">
             <CheckCircle size={20} className="text-emerald-500" />
-            <span className="font-bold text-base" style={{ color: colors.dark }}>
+            <span
+              className="font-bold text-base"
+              style={{ color: colors.dark }}
+            >
               Payment Schedule
             </span>
           </div>
@@ -102,7 +105,8 @@ export const PlanDetailsScreen: FC<PlanDetailsScreenProps> = ({
                         className="font-bold text-base mb-1"
                         style={{ color: colors.dark }}
                       >
-                        {i === 0 ? "First" : i === 1 ? "Second" : "Third"} Payment
+                        {i === 0 ? "First" : i === 1 ? "Second" : "Third"}{" "}
+                        Payment
                       </div>
                       <div className="flex items-center gap-1 text-xs text-gray-600">
                         <Calendar size={12} />
@@ -146,15 +150,18 @@ export const PlanDetailsScreen: FC<PlanDetailsScreenProps> = ({
               Auto-payment enabled:
             </div>
             <div className="text-blue-800">
-              Future installments will be automatically charged to your linked payment
-              method on the due dates.
+              Future installments will be automatically charged to your linked
+              payment method on the due dates.
             </div>
           </div>
         </div>
 
         {/* Plan Benefits */}
         <div className="bg-gray-50 rounded-2xl p-5">
-          <div className="font-bold text-base mb-3" style={{ color: colors.dark }}>
+          <div
+            className="font-bold text-base mb-3"
+            style={{ color: colors.dark }}
+          >
             Plan Benefits:
           </div>
           <div className="space-y-2">
@@ -165,7 +172,10 @@ export const PlanDetailsScreen: FC<PlanDetailsScreenProps> = ({
               "No impact on credit score",
             ].map((benefit, i) => (
               <div key={i} className="flex items-start gap-2">
-                <CheckCircle size={16} className="text-emerald-500 flex-shrink-0 mt-0.5" />
+                <CheckCircle
+                  size={16}
+                  className="text-emerald-500 flex-shrink-0 mt-0.5"
+                />
                 <span className="text-sm text-gray-700">{benefit}</span>
               </div>
             ))}
