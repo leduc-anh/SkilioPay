@@ -16,8 +16,11 @@ export const ScreenTransition: FC<ScreenTransitionProps> = ({
 }) => {
   return (
     <div 
-      key={currentScreen} 
-      className="w-full h-full flex flex-col animate-slideIn"
+      key={currentScreen}
+      className="w-full h-full flex flex-col"
+      style={{
+        animation: "slideIn 0.3s ease-out forwards"
+      }}
     >
       {children}
     </div>

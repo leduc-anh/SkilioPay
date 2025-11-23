@@ -14,7 +14,7 @@ export const PhoneFrame: FC<PhoneFrameProps> = ({ children }) => (
     <div className="relative bg-gray-900 rounded-3xl shadow-2xl w-96 h-[720px] overflow-hidden border-8 border-gray-800 flex flex-col">
       {/* Phone notch */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-gray-900 rounded-b-2xl z-20"></div>
-      
+
       {/* Status bar */}
       <div className="bg-gray-900 px-6 py-3 flex justify-between text-white text-xs z-10 flex-shrink-0">
         <span className="font-semibold">9:41</span>
@@ -28,12 +28,10 @@ export const PhoneFrame: FC<PhoneFrameProps> = ({ children }) => (
           <span className="font-semibold">100%</span>
         </div>
       </div>
-      
+
       {/* Screen content */}
       <div className="flex-1 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 overflow-y-auto">
-          {children}
-        </div>
+        <div className="absolute inset-0 overflow-y-auto">{children}</div>
       </div>
     </div>
   </div>
