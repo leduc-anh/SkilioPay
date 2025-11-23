@@ -1,6 +1,7 @@
 # New Screens Added - Payment Due & Payment History
 
 ## Overview
+
 Added 2 critical screens to complete the PayLater user journey: Payment Due reminder and Payment History view.
 
 ---
@@ -8,16 +9,19 @@ Added 2 critical screens to complete the PayLater user journey: Payment Due remi
 ## 🆕 New Screens
 
 ### 1. Payment Due Screen ⏰
+
 **File**: `src/components/screens/PaymentDueScreen.tsx` (229 lines)  
 **Branch**: `feat/payment-due-screen`
 
 #### Design Features
+
 - ✅ **Orange/Amber Header** - Visual urgency for due payment
 - ✅ **Large Bell Icon** - 128px circular badge with gradient
 - ✅ **"Payment Due Soon!" Title** - Clear messaging
 - ✅ **Days Until Due** - "Your next installment is due in X days"
 
 #### Plan Card Details
+
 - ✅ Product icon (Headphones) with emerald background
 - ✅ Product name and plan ID
 - ✅ **Payment Amount** - Large $99.67 display
@@ -25,11 +29,13 @@ Added 2 critical screens to complete the PayLater user journey: Payment Due remi
 - ✅ **Payment Method** - Credit card •••• 4242
 
 #### Auto-Payment Info Box
+
 - ✅ Blue banner with bell icon
 - ✅ Clear message about automatic charge
 - ✅ Reminder to ensure sufficient funds
 
 #### Payment Timeline
+
 - ✅ **3 installment cards** showing:
   - Payment 1/3: ✅ Paid (green checkmark)
   - Payment 2/3: Current (yellow badge "Due in 3 days")
@@ -37,6 +43,7 @@ Added 2 critical screens to complete the PayLater user journey: Payment Due remi
 - ✅ Visual progression through payment schedule
 
 #### Action Buttons
+
 1. **"Pay Now"** (green primary) - Process payment immediately
 2. **"Update Payment Method"** (green outline) - Change payment card
 3. **"Dismiss Reminder"** (text link) - Close notification
@@ -46,10 +53,12 @@ Added 2 critical screens to complete the PayLater user journey: Payment Due remi
 ---
 
 ### 2. Payment History Screen 📊
+
 **File**: `src/components/screens/PaymentHistoryScreen.tsx` (232 lines)  
 **Branch**: `feat/payment-due-screen`
 
 #### Design Features
+
 - ✅ **Emerald Header** - Consistent with app theme
 - ✅ **Download Icon** - Export functionality (placeholder)
 - ✅ **Summary Cards Grid** (3 columns)
@@ -58,7 +67,9 @@ Added 2 critical screens to complete the PayLater user journey: Payment Due remi
   - **Failed**: Red card showing failed payment attempts
 
 #### Payment Cards
+
 Each payment displays:
+
 - ✅ **Product Name** - e.g., "Premium Headphones"
 - ✅ **Plan Details** - "Payment 1/3 • Plan #PL-001"
 - ✅ **Status Badge** with icon:
@@ -70,11 +81,13 @@ Each payment displays:
 - ✅ **Date** - "Paid on Oct 24, 2025" or "Due on Nov 23, 2025"
 
 #### Sections
+
 1. **Failed Payments** (if any) - Red section header
 2. **Upcoming Payments** - Future installments
 3. **Payment History** - Past completed payments
 
 #### Special Features
+
 - ✅ **Empty State** - Calendar icon + "No payment history yet"
 - ✅ **Export Button** - "Export Payment History" with download icon
 - ✅ **Sorted by Date** - Most recent first
@@ -89,6 +102,7 @@ Each payment displays:
 ### Updated Files
 
 #### 1. `constants.ts`
+
 ```typescript
 // Added new screen types
 export type Screen = 
@@ -101,7 +115,9 @@ export type Screen =
 ```
 
 #### 2. `SkillioPayPresentation.tsx`
+
 **New Handlers**:
+
 ```typescript
 const handleViewPaymentHistory = () => {
   setScreen("payment-history");
@@ -113,6 +129,7 @@ const handleShowPaymentDue = () => {
 ```
 
 **New Route Cases**:
+
 ```typescript
 case "payment-due":
   return (
@@ -135,6 +152,7 @@ case "payment-history":
 ```
 
 **Demo Controls Enhanced**:
+
 ```typescript
 // Added 2 new test buttons
 <button onClick={handleShowPaymentDue}>
@@ -146,7 +164,9 @@ case "payment-history":
 ```
 
 #### 3. `DashboardScreen.tsx`
+
 **New Prop**:
+
 ```typescript
 interface DashboardScreenProps {
   // ... existing props
@@ -155,6 +175,7 @@ interface DashboardScreenProps {
 ```
 
 **Connected Button**:
+
 ```tsx
 <button onClick={onViewHistory}>
   View Payment History
@@ -166,6 +187,7 @@ interface DashboardScreenProps {
 ## 🎨 Design Consistency
 
 ### Color Theme
+
 | Element | Color | Usage |
 |---------|-------|-------|
 | Payment Due Header | Orange→Amber gradient | Urgency indicator |
@@ -176,6 +198,7 @@ interface DashboardScreenProps {
 | Timeline - Upcoming | Gray-200 | Future payment |
 
 ### Icons Used
+
 - 🔔 Bell (Payment Due, Reminders)
 - ✅ CheckCircle (Paid status)
 - ❌ XCircle (Failed status)
@@ -190,6 +213,7 @@ interface DashboardScreenProps {
 ## 🎯 User Flows
 
 ### Payment Due Flow
+
 ```
 Dashboard → Payment Due Screen
   ├─> Pay Now → Process Payment → Dashboard
@@ -198,6 +222,7 @@ Dashboard → Payment Due Screen
 ```
 
 ### Payment History Flow
+
 ```
 Dashboard → View Payment History
   ├─> View All Payments (grouped by status)
@@ -206,6 +231,7 @@ Dashboard → View Payment History
 ```
 
 ### Demo Testing Flow
+
 ```
 Demo Controls
   ├─> 📅 Show Payment Due → Payment Due Screen
@@ -217,6 +243,7 @@ Demo Controls
 ## 📊 Statistics
 
 ### Payment Due Screen
+
 - **Total Lines**: 229
 - **Components**: 1
 - **Props**: 5
@@ -228,6 +255,7 @@ Demo Controls
   - Action Buttons
 
 ### Payment History Screen
+
 - **Total Lines**: 232
 - **Components**: 1
 - **Props**: 2
@@ -243,6 +271,7 @@ Demo Controls
 ## ✅ Features Completed
 
 ### Payment Due
+
 - [x] Orange urgency theme
 - [x] Bell icon with gradient
 - [x] Days until due calculation
@@ -257,6 +286,7 @@ Demo Controls
 - [x] Navigation back to dashboard
 
 ### Payment History
+
 - [x] Summary statistics (3 cards)
 - [x] Failed payments section
 - [x] Upcoming payments section
@@ -274,6 +304,7 @@ Demo Controls
 ## 🚀 Navigation Integration
 
 ### Demo Controls
+
 ```
 [Demo Panel]
   ├─ Test User selector
@@ -284,6 +315,7 @@ Demo Controls
 ```
 
 ### Dashboard Actions
+
 ```
 [Dashboard Screen]
   ├─ Active Plans (view details)
@@ -297,6 +329,7 @@ Demo Controls
 ## 🔄 Git Workflow
 
 ### Branch: `feat/payment-due-screen`
+
 ```bash
 ✅ Created PaymentDueScreen.tsx
 ✅ Created PaymentHistoryScreen.tsx
@@ -308,6 +341,7 @@ Demo Controls
 ```
 
 ### Commits
+
 1. `03af071` - feat(payment-due): Add payment due reminder screen with timeline
 2. `d57baf2` - feat: Add Payment Due and Payment History screens with navigation
 
@@ -316,18 +350,21 @@ Demo Controls
 ## 📝 Code Quality
 
 ### TypeScript
+
 - ✅ Full type safety
 - ✅ Proper interfaces
 - ✅ No `any` types
 - ✅ Optional props handled
 
 ### Accessibility
+
 - ✅ aria-label on buttons
 - ✅ Semantic HTML
 - ✅ Keyboard navigation support
 - ✅ Screen reader friendly
 
 ### Performance
+
 - ✅ Efficient data filtering
 - ✅ Memoization where needed
 - ✅ No unnecessary re-renders
@@ -339,6 +376,7 @@ Demo Controls
 ### Manual Testing Scenarios
 
 #### Payment Due Screen
+
 1. ✅ View from dashboard
 2. ✅ View from demo controls
 3. ✅ Check days calculation
@@ -348,6 +386,7 @@ Demo Controls
 7. ✅ Test "Dismiss" button
 
 #### Payment History Screen
+
 1. ✅ View from dashboard button
 2. ✅ View from demo controls
 3. ✅ Check summary counts
@@ -362,6 +401,7 @@ Demo Controls
 ## 💡 Future Enhancements
 
 ### Payment Due
+
 - [ ] Push notifications integration
 - [ ] Email/SMS reminders
 - [ ] Snooze reminder option
@@ -369,6 +409,7 @@ Demo Controls
 - [ ] Add funds reminder if balance low
 
 ### Payment History
+
 - [ ] Actual export to PDF/CSV
 - [ ] Filter by date range
 - [ ] Search functionality
@@ -381,6 +422,7 @@ Demo Controls
 ## 📦 Files Added/Modified
 
 ### New Files (2)
+
 ```
 src/components/screens/
   ├─ PaymentDueScreen.tsx        (229 lines) ✨ NEW
@@ -388,6 +430,7 @@ src/components/screens/
 ```
 
 ### Modified Files (5)
+
 ```
 src/components/
   ├─ SkillioPayPresentation.tsx  (+47 lines)
@@ -403,6 +446,7 @@ src/components/
 ## 🎊 Summary
 
 ### Achievements
+
 ✅ **2 new screens** fully designed and implemented  
 ✅ **Payment Due notification** with timeline  
 ✅ **Payment History view** with filtering  
@@ -414,6 +458,7 @@ src/components/
 ✅ **Clean Git history** with feature branch  
 
 ### Repository Status
+
 ```
 Branch: main (d57baf2)
 Status: ✅ All changes merged and pushed
@@ -424,7 +469,7 @@ Total Screens: 6 (Checkout, Plan Details, Success, Dashboard, Payment Due, Histo
 
 **Date**: November 22, 2025  
 **Status**: ✅ Complete & Deployed  
-**Repository**: https://github.com/leduc-anh/SkilioPay  
+**Repository**: <https://github.com/leduc-anh/SkilioPay>  
 **Branch**: main + feat/payment-due-screen
 
 **Ready for demo!** 🚀

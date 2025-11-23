@@ -7,6 +7,7 @@ import { users, carts } from "../data/mockData";
 // Import components
 import { PhoneFrame } from "./common/PhoneFrame";
 import { Screen } from "./common/constants";
+import { ScreenTransition } from "./common/ScreenTransition";
 import { CheckoutScreen } from "./screens/CheckoutScreen";
 import { PlanDetailsScreen } from "./screens/PlanDetailsScreen";
 import { SuccessScreen } from "./screens/SuccessScreen";
@@ -158,6 +159,7 @@ const SkillioPayPresentation = () => {
           <PaymentHistoryScreen
             agreements={agreements}
             onBack={() => setScreen("dashboard")}
+            onShowPaymentDue={handleShowPaymentDue}
           />
         );
       default:
@@ -233,7 +235,11 @@ const SkillioPayPresentation = () => {
           </div>
         </div>
       </div>
-      <PhoneFrame>{renderScreen()}</PhoneFrame>
+      <PhoneFrame>
+        <ScreenTransition currentScreen={screen}>
+          {renderScreen()}
+        </ScreenTransition>
+      </PhoneFrame>
     </div>
   );
 };

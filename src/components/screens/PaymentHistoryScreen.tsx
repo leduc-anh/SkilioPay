@@ -1,11 +1,12 @@
 import { FC } from "react";
-import { ChevronLeft, CheckCircle, XCircle, Clock, Calendar, Download } from "lucide-react";
+import { ChevronLeft, CheckCircle, XCircle, Clock, Calendar, Download, Bell } from "lucide-react";
 import { Agreement } from "../../data/mockData";
 import { colors } from "../common/constants";
 
 interface PaymentHistoryScreenProps {
   agreements: Agreement[];
   onBack: () => void;
+  onShowPaymentDue?: () => void;
 }
 
 /**
@@ -16,6 +17,7 @@ interface PaymentHistoryScreenProps {
 export const PaymentHistoryScreen: FC<PaymentHistoryScreenProps> = ({
   agreements,
   onBack,
+  onShowPaymentDue,
 }) => {
   // Collect all payments from all agreements
   const allPayments = agreements.flatMap((agreement) =>
@@ -134,8 +136,12 @@ export const PaymentHistoryScreen: FC<PaymentHistoryScreenProps> = ({
             <ChevronLeft size={24} />
           </button>
           <span className="font-bold text-xl">Payment History</span>
-          <button className="p-1" aria-label="Export history">
-            <Download size={20} />
+          <button 
+            onClick={onShowPaymentDue}
+            className="p-1 hover:bg-white/20 rounded-lg transition-colors" 
+            aria-label="View payment reminders"
+          >
+            <Bell size={20} />
           </button>
         </div>
       </div>
