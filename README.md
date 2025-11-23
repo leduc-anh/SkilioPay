@@ -10,13 +10,15 @@ A modern Buy Now, Pay Later solution for Southeast Asia with flexible payment pl
 ## ✨ Features
 
 ### 🛒 Payment Plans
+
 - **4 Flexible Options**: Split payments into 1, 3, 6, or 12 monthly installments
 - **Interest-Free**: 0% interest on all payment plans
 - **Instant Approval**: Real-time eligibility checking
 - **"POPULAR" Badge**: Highlighted 3-month plan recommendation
 
 ### 📱 User Interface
-- **6 Complete Screens**: 
+
+- **6 Complete Screens**:
   - Checkout - Product selection with payment plan options
   - Plan Details - Installment schedule breakdown
   - Success - Animated confirmation page
@@ -28,6 +30,7 @@ A modern Buy Now, Pay Later solution for Southeast Asia with flexible payment pl
 - **Responsive Layout**: Optimized for mobile devices
 
 ### 💾 Database & Data
+
 - **SQLite Integration**: Persistent local storage
 - **5 Relational Tables**: users, carts, agreements, installments, activity_logs
 - **8 Test Users**: Pre-loaded with varied profiles
@@ -35,11 +38,13 @@ A modern Buy Now, Pay Later solution for Southeast Asia with flexible payment pl
 - **Foreign Key Constraints**: Data integrity enforcement
 
 ### 🌏 Multi-Region Support
+
 - **4 Currencies**: IDR (Indonesia), VND (Vietnam), MYR (Malaysia), SGD (Singapore)
 - **Timezone Handling**: Asia/Jakarta, Asia/Ho_Chi_Minh, Asia/Kuala_Lumpur, Asia/Singapore
 - **Locale Support**: id-ID, vi-VN, ms-MY, en-SG
 
 ### 📊 Payment Tracking
+
 - **Real-Time Status**: PAID, DUE, UPCOMING, FAILED states
 - **Progress Bars**: Visual completion indicators
 - **Due Date Badges**: "Due Today" notifications
@@ -47,6 +52,7 @@ A modern Buy Now, Pay Later solution for Southeast Asia with flexible payment pl
 - **Activity Logs**: Complete audit trail
 
 ### 🎨 UI Components
+
 - **Animated Checkmark**: Bouncing success animation
 - **Payment Reminder Box**: Amber-themed alert with bell icon
 - **Summary Cards**: Active plans count, total remaining, next due
@@ -54,6 +60,7 @@ A modern Buy Now, Pay Later solution for Southeast Asia with flexible payment pl
 - **Action Buttons**: Pay Now, Update Payment Method, Dismiss
 
 ### 🔧 Developer Features
+
 - **TypeScript**: Full type safety with strict mode
 - **Hot Module Replacement**: Instant updates with Vite HMR
 - **ESLint**: Code quality enforcement
@@ -61,6 +68,8 @@ A modern Buy Now, Pay Later solution for Southeast Asia with flexible payment pl
 - **Mock Data**: CSV fixtures for testing scenarios
 
 ## Getting Started
+
+### Local Development
 
 ```bash
 # Install
@@ -72,6 +81,38 @@ npm run db:setup
 # Run
 npm run dev
 ```
+
+### Deploy to Vercel
+
+1. **Create Vercel Postgres Database**
+   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
+   - Create a new Postgres database
+   - Note your connection details
+
+2. **Run Migration Script**
+   ```bash
+   # Set your Vercel Postgres connection string
+   export POSTGRES_URL="your-connection-string"
+   
+   # Run the migration
+   npx tsx scripts/setupVercelDb.ts
+   ```
+
+3. **Set Environment Variables**
+   - In Vercel Dashboard → Your Project → Settings → Environment Variables
+   - Add: `VITE_USE_VERCEL_DB` = `true`
+   - Add your Vercel Postgres connection strings (auto-configured)
+
+4. **Deploy**
+   ```bash
+   # Install Vercel CLI
+   npm i -g vercel
+   
+   # Deploy
+   vercel --prod
+   ```
+
+   Or push to GitHub and auto-deploy via Vercel integration
 
 ## Tech Stack
 
