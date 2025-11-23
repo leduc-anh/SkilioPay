@@ -1,4 +1,3 @@
-import React from "react";
 import SkillioPayPresentation from "./components/SkillioPayPresentation";
 
 function App() {

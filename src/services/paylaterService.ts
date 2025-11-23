@@ -3,12 +3,9 @@ import {
   carts,
   agreements,
   activityLog,
-  User,
-  Cart,
   Agreement,
   Installment,
   ActivityLog,
-  InstallmentStatus,
 } from "../data/mockData";
 
 export const MIN_ELIGIBLE_AMOUNT = 30.0;
@@ -83,7 +80,6 @@ class PayLaterService {
       return null;
     }
 
-    const user = users.find((u) => u.id === userId)!;
     const cart = carts.find((c) => c.id === cartId)!;
 
     const totalAmount = cart.total;
