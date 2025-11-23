@@ -87,14 +87,86 @@ async function setupVercelDb() {
 
     // Insert users
     const users = [
-      { id: "user_id_vn_001", name: "Nguyễn Văn An", timezone: "Asia/Ho_Chi_Minh", locale: "vi-VN", isVerified: true, successfulTransactions: 5, hasPaymentMethod: true, defaultPaymentLast4: "4242" },
-      { id: "user_id_id_001", name: "Budi Santoso", timezone: "Asia/Jakarta", locale: "id-ID", isVerified: true, successfulTransactions: 3, hasPaymentMethod: true, defaultPaymentLast4: "5555" },
-      { id: "user_id_my_001", name: "Ahmad Ibrahim", timezone: "Asia/Kuala_Lumpur", locale: "ms-MY", isVerified: false, successfulTransactions: 0, hasPaymentMethod: false, defaultPaymentLast4: null },
-      { id: "user_id_sg_001", name: "Tan Wei Ming", timezone: "Asia/Singapore", locale: "en-SG", isVerified: true, successfulTransactions: 10, hasPaymentMethod: true, defaultPaymentLast4: "1234" },
-      { id: "user_id_vn_002", name: "Trần Thị Bình", timezone: "Asia/Ho_Chi_Minh", locale: "vi-VN", isVerified: true, successfulTransactions: 2, hasPaymentMethod: true, defaultPaymentLast4: "9876" },
-      { id: "user_id_id_002", name: "Siti Nurhaliza", timezone: "Asia/Jakarta", locale: "id-ID", isVerified: false, successfulTransactions: 0, hasPaymentMethod: false, defaultPaymentLast4: null },
-      { id: "user_id_my_002", name: "Lee Mei Ling", timezone: "Asia/Kuala_Lumpur", locale: "ms-MY", isVerified: true, successfulTransactions: 7, hasPaymentMethod: true, defaultPaymentLast4: "6543" },
-      { id: "user_id_sg_002", name: "Rajesh Kumar", timezone: "Asia/Singapore", locale: "en-SG", isVerified: true, successfulTransactions: 15, hasPaymentMethod: true, defaultPaymentLast4: "3210" },
+      {
+        id: "user_id_vn_001",
+        name: "Nguyễn Văn An",
+        timezone: "Asia/Ho_Chi_Minh",
+        locale: "vi-VN",
+        isVerified: true,
+        successfulTransactions: 5,
+        hasPaymentMethod: true,
+        defaultPaymentLast4: "4242",
+      },
+      {
+        id: "user_id_id_001",
+        name: "Budi Santoso",
+        timezone: "Asia/Jakarta",
+        locale: "id-ID",
+        isVerified: true,
+        successfulTransactions: 3,
+        hasPaymentMethod: true,
+        defaultPaymentLast4: "5555",
+      },
+      {
+        id: "user_id_my_001",
+        name: "Ahmad Ibrahim",
+        timezone: "Asia/Kuala_Lumpur",
+        locale: "ms-MY",
+        isVerified: false,
+        successfulTransactions: 0,
+        hasPaymentMethod: false,
+        defaultPaymentLast4: null,
+      },
+      {
+        id: "user_id_sg_001",
+        name: "Tan Wei Ming",
+        timezone: "Asia/Singapore",
+        locale: "en-SG",
+        isVerified: true,
+        successfulTransactions: 10,
+        hasPaymentMethod: true,
+        defaultPaymentLast4: "1234",
+      },
+      {
+        id: "user_id_vn_002",
+        name: "Trần Thị Bình",
+        timezone: "Asia/Ho_Chi_Minh",
+        locale: "vi-VN",
+        isVerified: true,
+        successfulTransactions: 2,
+        hasPaymentMethod: true,
+        defaultPaymentLast4: "9876",
+      },
+      {
+        id: "user_id_id_002",
+        name: "Siti Nurhaliza",
+        timezone: "Asia/Jakarta",
+        locale: "id-ID",
+        isVerified: false,
+        successfulTransactions: 0,
+        hasPaymentMethod: false,
+        defaultPaymentLast4: null,
+      },
+      {
+        id: "user_id_my_002",
+        name: "Lee Mei Ling",
+        timezone: "Asia/Kuala_Lumpur",
+        locale: "ms-MY",
+        isVerified: true,
+        successfulTransactions: 7,
+        hasPaymentMethod: true,
+        defaultPaymentLast4: "6543",
+      },
+      {
+        id: "user_id_sg_002",
+        name: "Rajesh Kumar",
+        timezone: "Asia/Singapore",
+        locale: "en-SG",
+        isVerified: true,
+        successfulTransactions: 15,
+        hasPaymentMethod: true,
+        defaultPaymentLast4: "3210",
+      },
     ];
 
     for (const user of users) {
@@ -108,15 +180,96 @@ async function setupVercelDb() {
 
     // Insert carts
     const carts = [
-      { id: "cart_vn_001", userId: "user_id_vn_001", total: 5000000, currency: "VND", eligibleThreshold: 1000000, itemCount: 1, itemName: "Premium Headphones", notes: "High-end audio equipment" },
-      { id: "cart_id_001", userId: "user_id_id_001", total: 3500000, currency: "IDR", eligibleThreshold: 500000, itemCount: 1, itemName: "Smartwatch Pro", notes: "Latest model with health tracking" },
-      { id: "cart_my_001", userId: "user_id_my_001", total: 1200, currency: "MYR", eligibleThreshold: 300, itemCount: 2, itemName: "Wireless Earbuds", notes: "Bundle pack with charging case" },
-      { id: "cart_sg_001", userId: "user_id_sg_001", total: 899, currency: "SGD", eligibleThreshold: 200, itemCount: 1, itemName: "Gaming Mouse", notes: "RGB mechanical gaming mouse" },
-      { id: "cart_vn_002", userId: "user_id_vn_002", total: 15000000, currency: "VND", eligibleThreshold: 1000000, itemCount: 1, itemName: "Laptop Pro", notes: "Professional grade laptop" },
-      { id: "cart_id_002", userId: "user_id_id_002", total: 800000, currency: "IDR", eligibleThreshold: 500000, itemCount: 3, itemName: "Office Accessories Bundle", notes: "Keyboard, mouse, webcam" },
-      { id: "cart_my_002", userId: "user_id_my_002", total: 2500, currency: "MYR", eligibleThreshold: 300, itemCount: 1, itemName: "Tablet", notes: "10-inch tablet for productivity" },
-      { id: "cart_sg_002", userId: "user_id_sg_002", total: 450, currency: "SGD", eligibleThreshold: 200, itemCount: 2, itemName: "Phone Case + Screen Protector", notes: "Premium protection bundle" },
-      { id: "cart_vn_003", userId: "user_id_vn_001", total: 8000000, currency: "VND", eligibleThreshold: 1000000, itemCount: 1, itemName: "Camera Kit", notes: "DSLR camera with lens" },
+      {
+        id: "cart_vn_001",
+        userId: "user_id_vn_001",
+        total: 5000000,
+        currency: "VND",
+        eligibleThreshold: 1000000,
+        itemCount: 1,
+        itemName: "Premium Headphones",
+        notes: "High-end audio equipment",
+      },
+      {
+        id: "cart_id_001",
+        userId: "user_id_id_001",
+        total: 3500000,
+        currency: "IDR",
+        eligibleThreshold: 500000,
+        itemCount: 1,
+        itemName: "Smartwatch Pro",
+        notes: "Latest model with health tracking",
+      },
+      {
+        id: "cart_my_001",
+        userId: "user_id_my_001",
+        total: 1200,
+        currency: "MYR",
+        eligibleThreshold: 300,
+        itemCount: 2,
+        itemName: "Wireless Earbuds",
+        notes: "Bundle pack with charging case",
+      },
+      {
+        id: "cart_sg_001",
+        userId: "user_id_sg_001",
+        total: 899,
+        currency: "SGD",
+        eligibleThreshold: 200,
+        itemCount: 1,
+        itemName: "Gaming Mouse",
+        notes: "RGB mechanical gaming mouse",
+      },
+      {
+        id: "cart_vn_002",
+        userId: "user_id_vn_002",
+        total: 15000000,
+        currency: "VND",
+        eligibleThreshold: 1000000,
+        itemCount: 1,
+        itemName: "Laptop Pro",
+        notes: "Professional grade laptop",
+      },
+      {
+        id: "cart_id_002",
+        userId: "user_id_id_002",
+        total: 800000,
+        currency: "IDR",
+        eligibleThreshold: 500000,
+        itemCount: 3,
+        itemName: "Office Accessories Bundle",
+        notes: "Keyboard, mouse, webcam",
+      },
+      {
+        id: "cart_my_002",
+        userId: "user_id_my_002",
+        total: 2500,
+        currency: "MYR",
+        eligibleThreshold: 300,
+        itemCount: 1,
+        itemName: "Tablet",
+        notes: "10-inch tablet for productivity",
+      },
+      {
+        id: "cart_sg_002",
+        userId: "user_id_sg_002",
+        total: 450,
+        currency: "SGD",
+        eligibleThreshold: 200,
+        itemCount: 2,
+        itemName: "Phone Case + Screen Protector",
+        notes: "Premium protection bundle",
+      },
+      {
+        id: "cart_vn_003",
+        userId: "user_id_vn_001",
+        total: 8000000,
+        currency: "VND",
+        eligibleThreshold: 1000000,
+        itemCount: 1,
+        itemName: "Camera Kit",
+        notes: "DSLR camera with lens",
+      },
     ];
 
     for (const cart of carts) {
@@ -130,9 +283,10 @@ async function setupVercelDb() {
 
     console.log("\n✅ Database setup complete!");
     console.log("\n📝 Next steps:");
-    console.log("1. Set environment variable in Vercel: VITE_USE_VERCEL_DB=true");
+    console.log(
+      "1. Set environment variable in Vercel: VITE_USE_VERCEL_DB=true"
+    );
     console.log("2. Deploy your app to Vercel");
-    
   } catch (error) {
     console.error("❌ Error setting up database:", error);
     throw error;

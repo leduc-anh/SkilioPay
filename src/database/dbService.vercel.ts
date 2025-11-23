@@ -97,7 +97,9 @@ export const dbServiceVercel = {
       const inst = agreement.schedule[idx];
       await sql`
         INSERT INTO installments (agreement_id, amount, due_date, status, installment_number)
-        VALUES (${agreement.id}, ${inst.amount}, ${inst.dueDate.toISOString()}, ${inst.status}, ${idx + 1})
+        VALUES (${agreement.id}, ${
+        inst.amount
+      }, ${inst.dueDate.toISOString()}, ${inst.status}, ${idx + 1})
       `;
     }
   },

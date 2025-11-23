@@ -90,6 +90,7 @@ npm run dev
    - Note your connection details
 
 2. **Run Migration Script**
+
    ```bash
    # Set your Vercel Postgres connection string
    export POSTGRES_URL="your-connection-string"
@@ -104,6 +105,7 @@ npm run dev
    - Add your Vercel Postgres connection strings (auto-configured)
 
 4. **Deploy**
+
    ```bash
    # Install Vercel CLI
    npm i -g vercel

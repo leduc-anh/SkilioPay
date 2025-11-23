@@ -9,7 +9,8 @@ import type {
 } from "../data/mockData";
 
 // Check if we're in production (Vercel)
-const isProduction = import.meta.env.PROD && import.meta.env.VITE_USE_VERCEL_DB === 'true';
+const isProduction =
+  import.meta.env.PROD && import.meta.env.VITE_USE_VERCEL_DB === "true";
 
 // Dynamic imports to avoid bundling unused code
 let dbService: {
@@ -32,7 +33,9 @@ let dbService: {
   ) => Promise<void> | void;
   getActivityLogs: (
     limit?: number
-  ) => Promise<Array<{ timestamp: Date; message: string }>> | Array<{ timestamp: Date; message: string }>;
+  ) =>
+    | Promise<Array<{ timestamp: Date; message: string }>>
+    | Array<{ timestamp: Date; message: string }>;
   close: () => void;
 };
 
