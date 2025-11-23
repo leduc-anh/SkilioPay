@@ -7,12 +7,15 @@
         "dev": "vite",
         "build": "tsc && vite build",
         "preview": "vite preview",
-        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "db:setup": "tsx scripts/setupDb.ts"
     },
     "dependencies": {
+        "@types/better-sqlite3": "^7.6.13",
+        "better-sqlite3": "^12.4.6",
+        "lucide-react": "^0.294.0",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "lucide-react": "^0.294.0"
+        "react-dom": "^18.2.0"
     },
     "devDependencies": {
         "@types/react": "^18.2.43",
@@ -26,6 +29,7 @@
         "eslint-plugin-react-refresh": "^0.4.5",
         "postcss": "^8.4.32",
         "tailwindcss": "^3.3.6",
+        "tsx": "^4.20.6",
         "typescript": "^5.2.2",
         "vite": "^5.0.8"
     }
