@@ -1,5 +1,13 @@
 import { FC } from "react";
-import { ChevronLeft, CheckCircle, XCircle, Clock, Calendar, Download, Bell } from "lucide-react";
+import {
+  ChevronLeft,
+  CheckCircle,
+  XCircle,
+  Clock,
+  Calendar,
+  Download,
+  Bell,
+} from "lucide-react";
 import { Agreement } from "../../data/mockData";
 import { colors } from "../common/constants";
 
@@ -75,7 +83,7 @@ export const PaymentHistoryScreen: FC<PaymentHistoryScreenProps> = ({
     }
   };
 
-  const renderPaymentCard = (payment: typeof allPayments[0]) => (
+  const renderPaymentCard = (payment: (typeof allPayments)[0]) => (
     <div
       key={`${payment.agreementId}-${payment.installmentNumber}`}
       className="bg-white rounded-xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-all"
@@ -83,12 +91,15 @@ export const PaymentHistoryScreen: FC<PaymentHistoryScreenProps> = ({
       <div className="flex items-start justify-between mb-3">
         {/* Payment Info */}
         <div className="flex-1">
-          <div className="font-bold text-base mb-1" style={{ color: colors.dark }}>
+          <div
+            className="font-bold text-base mb-1"
+            style={{ color: colors.dark }}
+          >
             {payment.planName}
           </div>
           <div className="text-xs text-gray-500 mb-2">
-            Payment {payment.installmentNumber}/{payment.totalInstallments} • Plan #
-            {payment.agreementId.slice(-4)}
+            Payment {payment.installmentNumber}/{payment.totalInstallments} •
+            Plan #{payment.agreementId.slice(-4)}
           </div>
         </div>
 
@@ -136,9 +147,9 @@ export const PaymentHistoryScreen: FC<PaymentHistoryScreenProps> = ({
             <ChevronLeft size={24} />
           </button>
           <span className="font-bold text-xl">Payment History</span>
-          <button 
+          <button
             onClick={onShowPaymentDue}
-            className="p-1 hover:bg-white/20 rounded-lg transition-colors" 
+            className="p-1 hover:bg-white/20 rounded-lg transition-colors"
             aria-label="View payment reminders"
           >
             <Bell size={20} />
@@ -190,7 +201,10 @@ export const PaymentHistoryScreen: FC<PaymentHistoryScreenProps> = ({
         {/* Upcoming Payments */}
         {upcomingPayments.length > 0 && (
           <div>
-            <h3 className="font-bold text-base mb-3" style={{ color: colors.dark }}>
+            <h3
+              className="font-bold text-base mb-3"
+              style={{ color: colors.dark }}
+            >
               Upcoming Payments
             </h3>
             <div className="space-y-3">
@@ -202,7 +216,10 @@ export const PaymentHistoryScreen: FC<PaymentHistoryScreenProps> = ({
         {/* Paid Payments */}
         {paidPayments.length > 0 && (
           <div>
-            <h3 className="font-bold text-base mb-3" style={{ color: colors.dark }}>
+            <h3
+              className="font-bold text-base mb-3"
+              style={{ color: colors.dark }}
+            >
               Payment History
             </h3>
             <div className="space-y-3">
@@ -215,7 +232,9 @@ export const PaymentHistoryScreen: FC<PaymentHistoryScreenProps> = ({
         {sortedPayments.length === 0 && (
           <div className="text-center py-12">
             <Calendar size={64} className="text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-500 text-lg font-medium">No payment history yet</p>
+            <p className="text-gray-500 text-lg font-medium">
+              No payment history yet
+            </p>
             <p className="text-gray-400 text-sm mt-2">
               Your payment history will appear here
             </p>

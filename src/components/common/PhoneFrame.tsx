@@ -30,7 +30,11 @@ export const PhoneFrame: FC<PhoneFrameProps> = ({ children }) => (
       </div>
       
       {/* Screen content */}
-      <div className="flex-1 overflow-y-auto bg-white">{children}</div>
+      <div className="flex-1 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 overflow-y-auto">
+          {children}
+        </div>
+      </div>
     </div>
   </div>
 );

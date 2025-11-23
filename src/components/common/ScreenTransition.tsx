@@ -15,9 +15,9 @@ export const ScreenTransition: FC<ScreenTransitionProps> = ({
   currentScreen,
 }) => {
   return (
-    <div
-      key={currentScreen}
-      className="w-full h-full animate-slideIn"
+    <div 
+      key={currentScreen} 
+      className="w-full h-full flex flex-col animate-slideIn"
     >
       {children}
     </div>
