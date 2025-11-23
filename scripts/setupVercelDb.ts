@@ -1,10 +1,12 @@
-import { sql } from "@vercel/postgres";
+import { neon } from "@neondatabase/serverless";
 
-// This script sets up the Vercel Postgres database schema
-// Run this once after creating your Vercel Postgres database
+// This script sets up the Neon Postgres database schema
+// Run this once after creating your Neon database
 
-async function setupVercelDb() {
-  console.log("🔧 Setting up Vercel Postgres database...");
+const sql = neon(process.env.DATABASE_URL || "");
+
+async function setupNeonDb() {
+  console.log("🔧 Setting up Neon Postgres database...");
 
   try {
     // Create users table
@@ -284,13 +286,14 @@ async function setupVercelDb() {
     console.log("\n✅ Database setup complete!");
     console.log("\n📝 Next steps:");
     console.log(
-      "1. Set environment variable in Vercel: VITE_USE_VERCEL_DB=true"
+      "1. Set environment variable: DATABASE_URL=<your-neon-connection-string>"
     );
-    console.log("2. Deploy your app to Vercel");
+    console.log("2. Set environment variable in Vercel: VITE_USE_VERCEL_DB=true");
+    console.log("3. Deploy your app to Vercel");
   } catch (error) {
     console.error("❌ Error setting up database:", error);
     throw error;
   }
 }
 
-setupVercelDb();
+setupNeonDb();

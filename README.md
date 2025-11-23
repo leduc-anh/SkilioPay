@@ -84,16 +84,16 @@ npm run dev
 
 ### Deploy to Vercel
 
-1. **Create Vercel Postgres Database**
-   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
-   - Create a new Postgres database
-   - Note your connection details
+1. **Create Neon Database**
+   - Go to [Neon Console](https://console.neon.tech)
+   - Create a new project
+   - Copy your connection string
 
 2. **Run Migration Script**
 
    ```bash
-   # Set your Vercel Postgres connection string
-   export POSTGRES_URL="your-connection-string"
+   # Set your Neon connection string
+   export DATABASE_URL="postgresql://user:password@host/database"
    
    # Run the migration
    npx tsx scripts/setupVercelDb.ts
@@ -101,8 +101,8 @@ npm run dev
 
 3. **Set Environment Variables**
    - In Vercel Dashboard → Your Project → Settings → Environment Variables
+   - Add: `DATABASE_URL` = `<your-neon-connection-string>`
    - Add: `VITE_USE_VERCEL_DB` = `true`
-   - Add your Vercel Postgres connection strings (auto-configured)
 
 4. **Deploy**
 
@@ -121,7 +121,7 @@ npm run dev
 - React 18.2 + TypeScript 5.2
 - Vite 5.0
 - Tailwind CSS 3.3
-- SQLite 3 + better-sqlite3
+- SQLite 3 (development) + Neon Postgres (production)
 
 ## License
 

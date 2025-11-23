@@ -1,4 +1,4 @@
-import { sql } from "@vercel/postgres";
+import { neon } from "@neondatabase/serverless";
 import type {
   User,
   Cart,
@@ -7,11 +7,14 @@ import type {
   AgreementStatus,
 } from "../data/mockData";
 
+// Initialize Neon connection
+const sql = neon(process.env.DATABASE_URL || "");
+
 export const dbServiceVercel = {
   // Users
   getAllUsers: async (): Promise<User[]> => {
-    const { rows } = await sql`SELECT * FROM users`;
-    return rows.map((row: any) => ({
+    const rows = await sql`SELECT * FROM users`;
+    return rows.map((row) => ({
       id: row.id,
       name: row.name,
       isVerified: Boolean(row.is_verified),
@@ -24,7 +27,7 @@ export const dbServiceVercel = {
   },
 
   getUserById: async (id: string): Promise<User | undefined> => {
-    const { rows } = await sql`SELECT * FROM users WHERE id = ${id}`;
+    const rows = await sql`SELECT * FROM users WHERE id = ${id}`;
     if (rows.length === 0) return undefined;
     const row = rows[0];
     return {
@@ -41,8 +44,8 @@ export const dbServiceVercel = {
 
   // Carts
   getAllCarts: async (): Promise<Cart[]> => {
-    const { rows } = await sql`SELECT * FROM carts`;
-    return rows.map((row: any) => ({
+    const rows = await sql`SELECT * FROM carts`;
+    return rows.map((row) => ({
       id: row.id,
       userId: row.user_id,
       total: row.total,
@@ -55,7 +58,7 @@ export const dbServiceVercel = {
   },
 
   getCartById: async (id: string): Promise<Cart | undefined> => {
-    const { rows } = await sql`SELECT * FROM carts WHERE id = ${id}`;
+    const rows = await sql`SELECT * FROM carts WHERE id = ${id}`;
     if (rows.length === 0) return undefined;
     const row = rows[0];
     return {
@@ -71,8 +74,8 @@ export const dbServiceVercel = {
   },
 
   getCartsByUserId: async (userId: string): Promise<Cart[]> => {
-    const { rows } = await sql`SELECT * FROM carts WHERE user_id = ${userId}`;
-    return rows.map((row: any) => ({
+    const rows = await sql`SELECT * FROM carts WHERE user_id = ${userId}`;
+    return rows.map((row) => ({
       id: row.id,
       userId: row.user_id,
       total: row.total,
@@ -105,13 +108,13 @@ export const dbServiceVercel = {
   },
 
   getAgreementsByUserId: async (userId: string): Promise<Agreement[]> => {
-    const { rows: agreementRows } = await sql`
+    const agreementRows = await sql`
       SELECT * FROM agreements WHERE user_id = ${userId} ORDER BY created_at DESC
     `;
 
     const agreements: Agreement[] = [];
     for (const agr of agreementRows) {
-      const { rows: installments } = await sql`
+      const installments = await sql`
         SELECT * FROM installments WHERE agreement_id = ${agr.id} ORDER BY installment_number
       `;
 
@@ -121,7 +124,7 @@ export const dbServiceVercel = {
         cartId: agr.cart_id,
         totalAmount: agr.total_amount,
         status: agr.status as AgreementStatus,
-        schedule: installments.map((inst: any) => ({
+        schedule: installments.map((inst) => ({
           amount: inst.amount,
           dueDate: new Date(inst.due_date),
           status: inst.status as InstallmentStatus,
@@ -167,18 +170,18 @@ export const dbServiceVercel = {
   getActivityLogs: async (
     limit: number = 100
   ): Promise<Array<{ timestamp: Date; message: string }>> => {
-    const { rows } = await sql`
+    const rows = await sql`
       SELECT * FROM activity_logs ORDER BY timestamp DESC LIMIT ${limit}
     `;
 
-    return rows.map((row: any) => ({
+    return rows.map((row) => ({
       timestamp: new Date(row.timestamp),
       message: row.message,
     }));
   },
 
-  // Close is a no-op for Vercel Postgres (connection pooling handled automatically)
+  // Close is a no-op for Neon (connection pooling handled automatically)
   close: () => {
-    // No-op for Vercel Postgres
+    // No-op for Neon
   },
 };
