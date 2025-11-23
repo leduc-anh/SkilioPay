@@ -288,7 +288,9 @@ async function setupNeonDb() {
     console.log(
       "1. Set environment variable: DATABASE_URL=<your-neon-connection-string>"
     );
-    console.log("2. Set environment variable in Vercel: VITE_USE_VERCEL_DB=true");
+    console.log(
+      "2. Set environment variable in Vercel: VITE_USE_VERCEL_DB=true"
+    );
     console.log("3. Deploy your app to Vercel");
   } catch (error) {
     console.error("❌ Error setting up database:", error);
