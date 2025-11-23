@@ -4,7 +4,7 @@ import path from "path";
 export const initializeDatabase = () => {
   const dbPath = path.join(process.cwd(), "paylater.db");
   const db = new Database(dbPath);
-  
+
   // Enable foreign keys
   db.pragma("foreign_keys = ON");
 
@@ -109,14 +109,59 @@ export const seedDatabase = (db: Database.Database) => {
   `);
 
   const carts = [
-    ["C001", "U001", 2999000, "IDR", 1000000, 1, "Premium Headphones", "Electronics"],
-    ["C002", "U002", 4500000, "VND", 2000000, 1, "Smartwatch Pro", "Wearable Tech"],
+    [
+      "C001",
+      "U001",
+      2999000,
+      "IDR",
+      1000000,
+      1,
+      "Premium Headphones",
+      "Electronics",
+    ],
+    [
+      "C002",
+      "U002",
+      4500000,
+      "VND",
+      2000000,
+      1,
+      "Smartwatch Pro",
+      "Wearable Tech",
+    ],
     ["C003", "U003", 6000000, "MYR", 3000000, 1, "Gaming Console", "Gaming"],
     ["C004", "U004", 1200000, "SGD", 500000, 1, "Laptop Stand", "Accessories"],
-    ["C005", "U005", 1500000, "VND", 500000, 1, "Wireless Keyboard", "Computer Peripherals"],
+    [
+      "C005",
+      "U005",
+      1500000,
+      "VND",
+      500000,
+      1,
+      "Wireless Keyboard",
+      "Computer Peripherals",
+    ],
     ["C006", "U006", 5500000, "MYR", 2500000, 1, "4K Monitor", "Display"],
-    ["C007", "U007", 2500000, "SGD", 1000000, 1, "Mechanical Keyboard", "Gaming Accessories"],
-    ["C008", "U008", 3500000, "VND", 1500000, 1, "Ergonomic Chair", "Furniture"],
+    [
+      "C007",
+      "U007",
+      2500000,
+      "SGD",
+      1000000,
+      1,
+      "Mechanical Keyboard",
+      "Gaming Accessories",
+    ],
+    [
+      "C008",
+      "U008",
+      3500000,
+      "VND",
+      1500000,
+      1,
+      "Ergonomic Chair",
+      "Furniture",
+    ],
     ["C009", "U001", 800000, "IDR", 300000, 2, "USB-C Hub", "Accessories"],
   ];
 

@@ -1,7 +1,5 @@
 # 💳 SkilioPay PayLater MVP# SkilioPay PayLater MVP
 
-
-
 <div align="center">[![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue.svg)](https://www.typescriptlang.org/)
 
 [![React](https://img.shields.io/badge/React-18.2-61dafb.svg)](https://reactjs.org/)
@@ -308,19 +306,13 @@ The project includes comprehensive test data covering:
 
 | `npm run db:setup` | Initialize and seed SQLite database |### Business Logic
 
-
-
 ---- **In-memory data store** - Mock users, carts, agreements
 
 - **Service layer pattern** - Clean separation of concerns
 
 ## 🏗 Architecture- **Immutable activity log** - Audit trail of all actions
 
-
-
 ### Project Structure### Code Quality
-
-
 
 ```- **TypeScript strict mode** - Maximum type safety
 
@@ -481,8 +473,6 @@ main              # Production-ready code
 // Get user's agreements with updated statuses
 
 ### Data FlowgetAgreementsForUser(userId): Agreement[]
-
-
 
 ```// Retrieve full activity log
 
@@ -733,6 +723,7 @@ module.exports = {- Lighthouse score: 95+ (Performance, Accessibility)
 The project includes comprehensive test data:
 
 ### Sample Users (8)
+
 - **U001**: Alya Pratama (Indonesia) - Verified, 3 successful transactions
 - **U002**: Bao Nguyen (Vietnam) - Verified, 2 transactions
 - **U003**: Nur Izzah (Malaysia) - Unverified, 1 transaction
@@ -740,6 +731,7 @@ The project includes comprehensive test data:
 - **U005-U008**: Additional test users with varied profiles
 
 ### Sample Carts (9)
+
 - Premium Headphones (2,999,000 IDR)
 - Smartwatch Pro (4,500,000 VND)
 - Gaming Console (6,000,000 MYR)
@@ -755,6 +747,7 @@ The project includes comprehensive test data:
 ## 🛣 Roadmap
 
 ### Phase 1: MVP (✅ Current)
+
 - ✅ Basic UI with 6 screens
 - ✅ SQLite database integration
 - ✅ Payment plan selection
@@ -763,6 +756,7 @@ The project includes comprehensive test data:
 - ✅ Slide animations
 
 ### Phase 2: Backend Integration
+
 - [ ] REST API development
 - [ ] Authentication & authorization
 - [ ] Real payment gateway integration
@@ -770,6 +764,7 @@ The project includes comprehensive test data:
 - [ ] Admin dashboard
 
 ### Phase 3: Advanced Features
+
 - [ ] Credit scoring algorithm
 - [ ] Dynamic eligibility checks
 - [ ] Multi-language support (Bahasa, Vietnamese, Malay)
@@ -777,6 +772,7 @@ The project includes comprehensive test data:
 - [ ] Payment method management
 
 ### Phase 4: Scale & Optimize
+
 - [ ] Performance optimization
 - [ ] Caching layer (Redis)
 - [ ] Load balancing
@@ -791,17 +787,23 @@ We welcome contributions! Please follow these steps:
 
 1. **Fork the repository**
 2. **Create a feature branch**
+
    ```bash
    git checkout -b feature/amazing-feature
    ```
+
 3. **Commit your changes**
+
    ```bash
    git commit -m "feat: Add amazing feature"
    ```
+
 4. **Push to the branch**
+
    ```bash
    git push origin feature/amazing-feature
    ```
+
 5. **Open a Pull Request**
 
 ### Commit Convention

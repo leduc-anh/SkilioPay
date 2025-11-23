@@ -1,6 +1,12 @@
 import Database from "better-sqlite3";
 import path from "path";
-import type { User, Cart, Agreement, InstallmentStatus, AgreementStatus } from "../data/mockData";
+import type {
+  User,
+  Cart,
+  Agreement,
+  InstallmentStatus,
+  AgreementStatus,
+} from "../data/mockData";
 
 interface DbRow {
   [key: string]: unknown;
@@ -34,7 +40,9 @@ export const dbService = {
   },
 
   getUserById: (id: string): User | undefined => {
-    const row = getDb().prepare("SELECT * FROM users WHERE id = ?").get(id) as DbRow | undefined;
+    const row = getDb().prepare("SELECT * FROM users WHERE id = ?").get(id) as
+      | DbRow
+      | undefined;
     if (!row) return undefined;
     return {
       id: row.id as string,
@@ -64,7 +72,9 @@ export const dbService = {
   },
 
   getCartById: (id: string): Cart | undefined => {
-    const row = getDb().prepare("SELECT * FROM carts WHERE id = ?").get(id) as DbRow | undefined;
+    const row = getDb().prepare("SELECT * FROM carts WHERE id = ?").get(id) as
+      | DbRow
+      | undefined;
     if (!row) return undefined;
     return {
       id: row.id as string,
@@ -79,7 +89,9 @@ export const dbService = {
   },
 
   getCartsByUserId: (userId: string): Cart[] => {
-    const rows = getDb().prepare("SELECT * FROM carts WHERE user_id = ?").all(userId) as DbRow[];
+    const rows = getDb()
+      .prepare("SELECT * FROM carts WHERE user_id = ?")
+      .all(userId) as DbRow[];
     return rows.map((row) => ({
       id: row.id as string,
       userId: row.user_id as string,
@@ -99,7 +111,7 @@ export const dbService = {
       INSERT INTO agreements (id, user_id, cart_id, total_amount, status)
       VALUES (?, ?, ?, ?, ?)
     `);
-    
+
     insertAgreement.run(
       agreement.id,
       agreement.userId,
@@ -128,12 +140,16 @@ export const dbService = {
   getAgreementsByUserId: (userId: string): Agreement[] => {
     const db = getDb();
     const agreementRows = db
-      .prepare("SELECT * FROM agreements WHERE user_id = ? ORDER BY created_at DESC")
+      .prepare(
+        "SELECT * FROM agreements WHERE user_id = ? ORDER BY created_at DESC"
+      )
       .all(userId) as DbRow[];
 
     return agreementRows.map((agr) => {
       const installments = db
-        .prepare("SELECT * FROM installments WHERE agreement_id = ? ORDER BY installment_number")
+        .prepare(
+          "SELECT * FROM installments WHERE agreement_id = ? ORDER BY installment_number"
+        )
         .all(agr.id) as DbRow[];
 
       return {
@@ -151,28 +167,44 @@ export const dbService = {
     });
   },
 
-  updateInstallmentStatus: (agreementId: string, installmentNumber: number, status: InstallmentStatus): void => {
+  updateInstallmentStatus: (
+    agreementId: string,
+    installmentNumber: number,
+    status: InstallmentStatus
+  ): void => {
     const db = getDb();
-    db.prepare(`
+    db.prepare(
+      `
       UPDATE installments 
       SET status = ?, paid_date = CASE WHEN ? = 'PAID' THEN CURRENT_TIMESTAMP ELSE paid_date END
       WHERE agreement_id = ? AND installment_number = ?
-    `).run(status, status, agreementId, installmentNumber);
+    `
+    ).run(status, status, agreementId, installmentNumber);
   },
 
   // Activity Logs
-  addActivityLog: (message: string, userId?: string, agreementId?: string): void => {
-    getDb().prepare(`
+  addActivityLog: (
+    message: string,
+    userId?: string,
+    agreementId?: string
+  ): void => {
+    getDb()
+      .prepare(
+        `
       INSERT INTO activity_logs (message, user_id, agreement_id)
       VALUES (?, ?, ?)
-    `).run(message, userId || null, agreementId || null);
+    `
+      )
+      .run(message, userId || null, agreementId || null);
   },
 
-  getActivityLogs: (limit: number = 100): Array<{ timestamp: Date; message: string }> => {
+  getActivityLogs: (
+    limit: number = 100
+  ): Array<{ timestamp: Date; message: string }> => {
     const rows = getDb()
       .prepare("SELECT * FROM activity_logs ORDER BY timestamp DESC LIMIT ?")
       .all(limit) as DbRow[];
-    
+
     return rows.map((row) => ({
       timestamp: new Date(row.timestamp as string),
       message: row.message as string,
