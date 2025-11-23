@@ -87,6 +87,7 @@ npm run dev
 ### Deploy to Vercel
 
 **Quick Start:**
+
 ```bash
 # 1. Create Neon database at console.neon.tech
 # 2. Set DATABASE_URL and run migration
@@ -100,6 +101,7 @@ vercel --prod
 **Detailed Instructions:** See [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)
 
 **Key Steps:**
+
 1. Create Neon Database → Get connection string
 2. Run migration script → Creates tables + seeds data
 3. Set environment variables in Vercel:

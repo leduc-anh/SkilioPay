@@ -55,11 +55,13 @@ npm install
 ### 2.2 Set Environment Variable
 
 **Windows (PowerShell):**
+
 ```powershell
 $env:DATABASE_URL="your-neon-connection-string-here"
 ```
 
 **macOS/Linux:**
+
 ```bash
 export DATABASE_URL="your-neon-connection-string-here"
 ```
@@ -71,6 +73,7 @@ npx tsx scripts/setupVercelDb.ts
 ```
 
 **Expected Output:**
+
 ```
 🔧 Setting up Neon Postgres database...
 ✅ Users table created
@@ -130,6 +133,7 @@ Click **Environment Variables** section:
 #### 3.5 Verify Deployment
 
 Visit your deployment URL and test:
+
 - ✅ Homepage loads
 - ✅ Navigate through checkout flow
 - ✅ Check dashboard with multiple plans
@@ -170,11 +174,13 @@ vercel env add VITE_USE_VERCEL_DB
 #### 3.4 Deploy
 
 **For production:**
+
 ```bash
 vercel --prod
 ```
 
 **For preview:**
+
 ```bash
 vercel
 ```
@@ -182,6 +188,7 @@ vercel
 #### 3.5 Get Deployment URL
 
 After successful deployment, you'll see:
+
 ```
 ✅ Production: https://skilio-pay.vercel.app
 ```
@@ -202,6 +209,7 @@ After successful deployment, you'll see:
 Vercel will show you DNS records to add:
 
 **For apex domain (skiliopay.com):**
+
 ```
 Type: A
 Name: @
@@ -209,6 +217,7 @@ Value: 76.76.19.19
 ```
 
 **For www subdomain:**
+
 ```
 Type: CNAME
 Name: www
@@ -252,11 +261,13 @@ Watch deployment progress at [https://vercel.com/dashboard](https://vercel.com/d
 ### Build Fails with TypeScript Errors
 
 **Error:**
+
 ```
 error TS6133: 'React' is declared but its value is never read
 ```
 
 **Solution:**
+
 ```bash
 # Remove unused imports
 npm run build  # Test locally first
@@ -268,11 +279,13 @@ git push origin main
 ### Database Connection Fails
 
 **Error:**
+
 ```
 Error: Connection refused
 ```
 
 **Solution:**
+
 1. Verify `DATABASE_URL` is set in Vercel environment variables
 2. Check connection string includes `?sslmode=require`
 3. Ensure Neon database is not paused (free tier auto-pauses after 7 days inactivity)
@@ -280,9 +293,11 @@ Error: Connection refused
 ### Environment Variables Not Working
 
 **Solution:**
+
 1. Go to Vercel Dashboard → Project Settings → Environment Variables
 2. Ensure variables are added to correct environments (Production/Preview)
 3. After adding variables, trigger new deployment:
+
    ```bash
    vercel --prod --force
    ```
@@ -290,12 +305,14 @@ Error: Connection refused
 ### Build Output Too Large
 
 **Error:**
+
 ```
 Error: Maximum function size exceeded
 ```
 
 **Solution:**
 Optimize bundle size:
+
 ```bash
 # Check bundle size
 npm run build
@@ -319,6 +336,7 @@ build: {
 ### Enable Edge Runtime
 
 In `vercel.json`:
+
 ```json
 {
   "framework": "vite",
@@ -377,11 +395,13 @@ vercel logs <deployment-url> --follow
 **Neon Console:** [https://console.neon.tech](https://console.neon.tech)
 
 Monitor:
+
 - Storage usage (3GB free tier limit)
 - Active connections
 - Query performance
 
 **Backup Database:**
+
 ```bash
 # Using pg_dump
 pg_dump $DATABASE_URL > backup.sql
@@ -414,12 +434,14 @@ Before going live, verify:
 ### Free Tier Limits
 
 **Vercel:**
+
 - 100GB bandwidth/month
 - 100 hours serverless function execution
 - Unlimited deployments
 - 1 concurrent build
 
 **Neon:**
+
 - 3GB storage
 - 100 hours compute/month
 - Unlimited projects
@@ -430,12 +452,14 @@ Before going live, verify:
 ### When to Upgrade
 
 **Vercel Pro ($20/month):**
+
 - Need > 100GB bandwidth
 - Need > 100 hours function execution
 - Want password protection
 - Need advanced analytics
 
 **Neon Scale ($19/month):**
+
 - Need > 3GB storage
 - Need > 100 hours compute
 - Need branch reset
