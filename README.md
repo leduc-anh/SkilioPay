@@ -5,7 +5,9 @@
 ![SQLite](https://img.shields.io/badge/SQLite-3-003B57?style=flat-square&logo=sqlite)
 ![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?style=flat-square&logo=vite)
 
-A modern Buy Now, Pay Later solution for Southeast Asia with flexible payment plans and SQLite database.
+A modern Buy Now, Pay Later solution for Southeast Asia with flexible payment plans and cloud database.
+
+🚀 **Live Demo**: [https://skilio-pay.vercel.app](https://skilio-pay.vercel.app)
 
 ## ✨ Features
 
@@ -84,37 +86,28 @@ npm run dev
 
 ### Deploy to Vercel
 
-1. **Create Neon Database**
-   - Go to [Neon Console](https://console.neon.tech)
-   - Create a new project
-   - Copy your connection string
+**Quick Start:**
+```bash
+# 1. Create Neon database at console.neon.tech
+# 2. Set DATABASE_URL and run migration
+export DATABASE_URL="your-neon-connection-string"
+npx tsx scripts/setupVercelDb.ts
 
-2. **Run Migration Script**
+# 3. Deploy to Vercel
+vercel --prod
+```
 
-   ```bash
-   # Set your Neon connection string
-   export DATABASE_URL="postgresql://user:password@host/database"
-   
-   # Run the migration
-   npx tsx scripts/setupVercelDb.ts
-   ```
+**Detailed Instructions:** See [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)
 
-3. **Set Environment Variables**
-   - In Vercel Dashboard → Your Project → Settings → Environment Variables
-   - Add: `DATABASE_URL` = `<your-neon-connection-string>`
-   - Add: `VITE_USE_VERCEL_DB` = `true`
+**Key Steps:**
+1. Create Neon Database → Get connection string
+2. Run migration script → Creates tables + seeds data
+3. Set environment variables in Vercel:
+   - `DATABASE_URL` = Your Neon connection string
+   - `VITE_USE_VERCEL_DB` = `true`
+4. Deploy via Vercel Dashboard or CLI
 
-4. **Deploy**
-
-   ```bash
-   # Install Vercel CLI
-   npm i -g vercel
-   
-   # Deploy
-   vercel --prod
-   ```
-
-   Or push to GitHub and auto-deploy via Vercel integration
+**Auto-Deploy:** Push to GitHub `main` branch → Automatic production deployment
 
 ## Tech Stack
 
